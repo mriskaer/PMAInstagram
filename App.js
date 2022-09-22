@@ -1,26 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput, Button, FlatList, Pressable, Animated, SafeAreaView} from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, Button, FlatList, SafeAreaView, TouchableHighlight, TouchableOpacity} from 'react-native';
 
 function get_pic(url) {
   return {uri:url}
 }
-
-/* const LikeButton = () => {
-  const [liked, setLiked] = useState(false);
-
-  return (
-    <Pressable onPress={() => setLiked((isLiked) => !isLiked)}>
-      <MaterialCommunityIcons
-        name={liked ? "heart" : "heart-outline"}
-        size={32}
-        color={liked ? "red" : "black"}
-      />
-    </Pressable>
-  );
-};
- */
 
 const Item = ({user, comment}) => {
   return(
@@ -36,6 +21,23 @@ const Item = ({user, comment}) => {
 }
 
 export default function App() {
+
+  const notLikedPhoto = require('./assets/emptyheart.png')
+  const likedPhoto = require('./assets/fullheart.png')
+
+  const [imageUri, setImageUri] = useState(notLikedPhoto);
+  const [likedState, setLikedState] = useState(false);
+
+  const likePhoto = () => {
+    if (likedState == false) {
+      setLikedState(true)
+      setImageUri(likedPhoto)
+    } else {
+      setLikedState(false)
+      setImageUri(notLikedPhoto)
+    }
+  }
+
   var comments = [];
 
   const renderItem = ({item}) => (
@@ -79,10 +81,13 @@ export default function App() {
       </View>
       <View style={styles.postDescription}>
         <View style={{flexDirection: 'row'}}>
-          <Image
-            style={styles.bottomHeart}
-            source={require('./assets/emptyheart.png')}
-          />
+          <TouchableOpacity onPress={()=> likePhoto()}>
+            <Image
+              style={styles.bottomHeart}
+              source={imageUri}
+            />
+          </TouchableOpacity>
+          
           <Image
             style={styles.bottomLogo}
             source={get_pic("https://cdn.iconscout.com/icon/free/png-256/comment-3251596-2724645.png")}
@@ -194,7 +199,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderWidth: 1,
     borderColor: 'gray',
-    paddingLeft: 10
+    paddingLeft: 10,
+    paddingRight: 10
   },
 
   title: {
