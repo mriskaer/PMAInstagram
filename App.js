@@ -216,4 +216,5 @@ const styles = StyleSheet.create({
   commentStyling: {
     height: 170
   }
+
 });
