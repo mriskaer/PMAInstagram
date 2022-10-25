@@ -2,12 +2,13 @@ import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, Button, FlatList, SafeAreaView, TouchableHighlight, TouchableOpacity} from 'react-native';
+import styles from "./StyleSheet";
 
 function get_pic(url) {
   return {uri:url}
 }
 
-const Item = ({user, comment}) => {
+const Comment = ({user, comment}) => {
   return(
   <View style={styles.item}>
     <Text style={styles.title}>
@@ -40,8 +41,8 @@ export default function App() {
 
   var comments = [];
 
-  const renderItem = ({item}) => (
-    <Item 
+  const renderComment = ({item}) => (
+    <Comment 
       comment={item.comment}
       user={item.user}
     />)
@@ -107,7 +108,7 @@ export default function App() {
         <SafeAreaView style={styles.commentStyling}>
           <FlatList 
             data={commentsState} 
-            renderItem={renderItem} 
+            renderItem={renderComment} 
             keyExtractor={item => item.comment} 
           />
         </SafeAreaView>
@@ -138,83 +139,3 @@ export default function App() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'left',
-    justifyContent: 'center',
-    marginTop: '20%',
-    marginBottom: '30%',
-    marginLeft: 20
-  },
-
-  profilePhoto: {
-    width: 40,
-    height: 40,
-    borderRadius: 200,
-    marginRight: 10,
-  },
-
-  dots: {
-    width: 40,
-    height: 40, 
-    marginLeft: 60
-  },
-
-  postImg: {
-    width: 330,
-    height: 330,
-  }, 
-
-  profileView: {
-    flex: 1,
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 10
-  },
-
-  postDescription: {
-    flex: 4
-  },
-
-  bottomLogo: {
-    width: 30,
-    height: 30,
-  }, 
-
-  bottomHeart: {
-    width: 27,
-    height: 25
-  },
-
-  comment: {
-    flexDirection: 'row',
-  },
-
-  inputField: {
-    borderRadius: 20,
-    width: 280,
-    flexDirection: 'row',
-    borderWidth: 1,
-    borderColor: 'gray',
-    paddingLeft: 10,
-    paddingRight: 10
-  },
-
-  title: {
-    fontWeight: 'bold',
-    marginRight: 5
-  },
-
-  item: {
-    marginTop: 5,
-    flexDirection: 'row'
-  },
-
-  commentStyling: {
-    height: 170
-  }
-
-});
