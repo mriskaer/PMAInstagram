@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
       width: 40,
       height: 40,
       borderRadius: 200,
-      marginRight: 10,
     },
   
     dots: {
@@ -24,16 +23,20 @@ const styles = StyleSheet.create({
     },
   
     postImg: {
+      //marginLeft: 20,
       width: 330,
       height: 330,
     }, 
   
-    profileView: {
-      flex: 1,
+    profileHeader: {
+      flex: 0,
       justifyContent: 'space-between',
       flexDirection: 'row',
       alignItems: 'center',
-      marginTop: 10
+      marginTop: 30,
+      //marginLeft: 20,
+      marginBottom: 10,
+      zindex: 100
     },
   
     postDescription: {

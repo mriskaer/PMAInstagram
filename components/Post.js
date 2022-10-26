@@ -1,19 +1,38 @@
 import styles from "../StyleSheet";
 import { get_pic } from "../Util";
-import { View, Image } from "react-native";
-
+import { View, Image, Button, Alert, Text } from "react-native";
+import ProfileHeader from "./ProfileHeader";
+import LikeBar from "./LikeBar";
+import { Pressable } from "react-native";
 
 //var comments = [];
 
-//actual post
 function Post (props){
     return(
-    <View style={{flex: 6}}>
-        <Image
-        style={styles.postImg}
-        source={get_pic(props.post_image)}
-        />
-    </View>
+        <View>
+            <ProfileHeader 
+                profile_pic={props.profile_pic} 
+                user={props.user} 
+                location={props.location}
+             
+            ></ProfileHeader>
+        
+            <Image
+                style={styles.postImg}
+                source={get_pic(props.post_image)}
+            />
+
+            <LikeBar
+                likes={props.likes}
+                user={props.user}
+                description={props.description}
+            ></LikeBar>
+
+            <Pressable onPress={() => props.navigation.navigate("CommentScreen", {comments: props.comments})}>
+                <Text style={styles.buttonText}>Go to comments</Text>
+            </Pressable>
+        </View>
+
     )
 }
 export default Post;

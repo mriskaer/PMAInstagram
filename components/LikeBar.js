@@ -1,6 +1,13 @@
+import { useState } from 'react';
+import { View, Text, Image } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import styles from '../StyleSheet';
+import { get_pic } from '../Util';
 
+const notLikedPhoto = require('../assets/emptyheart.png')
+const likedPhoto = require('../assets/fullheart.png')
 
-const { View } = require('react-native');
+/* const { View } = require('react-native');
 const notLikedPhoto = require('../assets/emptyheart.png')
 const likedPhoto = require('../assets/fullheart.png')
 
@@ -15,16 +22,16 @@ const likePhoto = () => {
     setLikedState(false)
     setImageUri(notLikedPhoto)
   }
-}
+} */
 
-function LikeBar(props){
+export default function LikeBar(props){
     return(
         <View>
             <View style={{flexDirection: 'row'}}>
-                <TouchableOpacity onPress={()=> likePhoto()}>
+                <TouchableOpacity onPress={()=> 0}>
                     <Image
                     style={styles.bottomHeart}
-                    source={imageUri}
+                    source={notLikedPhoto}
                     />
                 </TouchableOpacity>
                 
@@ -34,15 +41,15 @@ function LikeBar(props){
                 />  
                 <Image
                     style={styles.bottomLogo}
-                    source={require('./assets/paperplane.png')}
+                    source={require('../assets/paperplane.png')}
                 />
             </View>
 
-            <Text style={{marginTop: 10}}>props.likes</Text>
+            <Text style={{marginTop: 10}}>{props.likes}</Text>
 
             <View style={{flexDirection: 'row'}}>
-                <Text style={{fontWeight: 'bold'}}>props.user</Text>
-                <Text style={{marginLeft: 5}}>props.description</Text>
+                <Text style={{fontWeight: 'bold'}}>{props.user}</Text>
+                <Text style={{marginLeft: 5}}>{props.description}</Text>
             </View>
         </View>
         

@@ -1,5 +1,20 @@
+import { View, Button, SafeAreaView, FlatList, commentsState, renderComment, Image, TextInput, Text } from "react-native";
+import styles from "../StyleSheet";
+import { get_pic } from "../Util";
+import Post from "../components/Post";
+import Comment from "../components/Comment";
 
 
+export default function CommentScreen({navigation, route}){
+    return(
+        <FlatList
+            style={{marginLeft: 20, marginRight: 10}}
+            data={route.params.comments} 
+            renderItem={({item}) => Comment({item})} 
+        />
+    )
+}
+/* 
 <View>
     <SafeAreaView style={styles.commentStyling}>
         <FlatList 
@@ -30,4 +45,4 @@
             />
         </View>
     </View>
-</View>
+</View> */

@@ -3,14 +3,14 @@ import {Text, View} from 'react-native';
 
 import styles from "../StyleSheet";
 
-function Comment(props){
+export default function Comment({item}){
     return(
     <View style={styles.item}>
       <Text style={styles.title}>
-        {props.user}
+        {item.user}
       </Text>
       <Text style={styles.comment}>
-        {props.comment}
+        {item.comment}
       </Text>
     </View>
     );
