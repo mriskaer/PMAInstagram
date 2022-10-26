@@ -79,7 +79,13 @@ const styles = StyleSheet.create({
   
     commentStyling: {
       height: 170
+    }, 
+
+    screenDefault: {
+      marginLeft: 20, 
+      marginRight: 10
     }
   });
+
 
 export default styles;

@@ -13,7 +13,7 @@ export default function ProfileHeader(props) {
             />
               <View>
                 <Text 
-                  style={{zindex:101, fontWeight: 'bold', color: "black"}}>
+                  style={{fontWeight: 'bold'}}>
                   {props.user}
                 </Text>
                 <Text>
