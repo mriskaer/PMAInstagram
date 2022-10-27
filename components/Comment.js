@@ -1,4 +1,4 @@
-import {React, useContext} from 'react';
+/* import {React, useContext} from 'react';
 import {Text, View, Alert} from 'react-native';
 
 import { CommentContext } from "../appContext"
@@ -17,3 +17,4 @@ export default function Comment({item}){
       </View>
     );
 }
+ */

@@ -26,12 +26,12 @@ export default function App() {
         },
         {
             post_id: "2",
-            profile_pic: "https://static1.cbrimages.com/wordpress/wp-content/uploads/2022/04/Shrek_Swamp_Meme.jpg",
-            user: "sir_shrek",
-            location: "The Kingdom of Far Far Away",
-            post_image: "https://filmconcertslive.com/wp-content/uploads/2021/11/movie_top_shrek2_1100px.jpg",
-            likes: "10.443 likes",
-            description: "Roadtrip to meet the #inlaws",
+            profile_pic: "https://pbs.twimg.com/media/DrHvc0DVsAAzRz-.jpg",
+            user: "elizabeth_the_dragon",
+            location: "A wedding",
+            post_image: "https://external-preview.redd.it/SWZwV-0NFRO5CoxzQubfYeSQ0pgEBC4qUGjaq6G6akQ.jpg?auto=webp&s=856e3689ae5a8ddcc1af047fe4dfacbec9d9a429",
+            likes: "74.378 likes",
+            description: "My #family is the best",
         },
     ];
 
@@ -39,20 +39,20 @@ export default function App() {
         {
             comment_id: "1",
             post_id: "1",
-            user: "domkeu",
-            comment: "my banan is smaller"
+            user: "elizabeth_the_dragon",
+            comment: "Have a great trip"
         },
         {
             comment_id: "2",
             post_id: "1",
-            user: "domkeu",
-            comment: "my banan is bigger"
+            user: "elizabeth_the_dragon",
+            comment: "#wishicouldbethere"
         },
         {
             comment_id: "3",
             post_id: "2",
-            user: "domkeu",
-            comment: "I should not be here"
+            user: "sir_shrek",
+            comment: "Except for ours @princess_fiona"
         }
     ]
 

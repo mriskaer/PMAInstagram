@@ -23,9 +23,9 @@ export default function CommentScreen({navigation, route}){
             (Math.max(...getComments.map((x) => parseInt(x["comment_id"]))) + 1).toString()
         )
     }
-    //?
+    
 
-    //replacing the section with all old, and the new comment, getting info from (? postscreen ?)
+    //replacing the section with all old, and the new comment
     const addComment = (message) => {
         if ( message != "" ) {
             setComments(
