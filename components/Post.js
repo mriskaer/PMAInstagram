@@ -9,7 +9,7 @@ import { Pressable } from "react-native";
 
 function Post (props){
     return(
-        <View>
+            <View>
             <ProfileHeader 
                 profile_pic={props.profile_pic} 
                 user={props.user} 
