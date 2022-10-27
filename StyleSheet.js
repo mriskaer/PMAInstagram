@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
       width: 40,
       height: 40,
       borderRadius: 200,
+      marginRight: 5
     },
   
     dots: {
@@ -34,7 +35,6 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       alignItems: 'center',
       marginTop: 30,
-      //marginLeft: 20,
       marginBottom: 10,
       zindex: 100
     },
@@ -82,8 +82,9 @@ const styles = StyleSheet.create({
     }, 
 
     screenDefault: {
-      marginLeft: 20, 
-      marginRight: 10
+      /* marginLeft: 20, 
+      marginRight: 10 */
+      alignItems: "center"
     }
   });
 

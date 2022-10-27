@@ -39,14 +39,13 @@ export default function CommentScreen({navigation, route}){
                 renderItem={({item}) => Comment({item})} 
                 keyExtractor={item => item.comment_id} 
                 extraData={route.params.comments_getter.filter((ele) => (ele["post_id"] == route.params.post_id))}
-                
 
             />
 
             <View style={styles.comment}>
                 <Image
                     style={styles.profilePhoto}
-                    source={get_pic("https://images2.alphacoders.com/219/219782.jpg")}
+                    source={require('../assets/donkey_profile.png')}
                 />
 
                 <View style={styles.inputField}>
@@ -58,16 +57,32 @@ export default function CommentScreen({navigation, route}){
 
                     <Button
                         style={{flex: 1}}
-                        onPress={()=>addComment(currentComment)}
+                        onPress={() => addComment(currentComment)}
                         title="Post"
                         color="gray"
                     />
-
                 </View>
             </View>
         </View>
 
         
+
+
+/* handleDelete() {
+    Alert.alert(
+      "Confirm delete",
+      "Are you sure you want to delete?",
+      [
+        {
+          text: "Yes",
+          onPress: () => this.props.deleteAction(this.props.data)
+        },
+        { text: "No", onPress: () => null }
+      ],
+      true
+    );
+    this.setState({ menuVisible: false });
+  } */
         
     )
 }

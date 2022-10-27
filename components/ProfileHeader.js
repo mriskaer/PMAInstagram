@@ -9,7 +9,7 @@ export default function ProfileHeader(props) {
         <View style={styles.profileHeader}>
             <Image
                 style={styles.profilePhoto}
-                source={get_pic(props.profile_pic)}
+                source={props.profile_pic}
             />
               <View>
                 <Text 

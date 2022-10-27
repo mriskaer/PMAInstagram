@@ -9,7 +9,7 @@ import { Pressable } from "react-native";
 
 function Post (props){
     return(
-        <View>
+        <View style={{alignItems: "left"}}>
             <ProfileHeader 
                 profile_pic={props.profile_pic} 
                 user={props.user} 
@@ -17,7 +17,7 @@ function Post (props){
             ></ProfileHeader>
             <Image
                 style={styles.postImg}
-                source={get_pic(props.post_image)}
+                source={props.post_image}
             />
             <LikeBar
                 likes={props.likes}

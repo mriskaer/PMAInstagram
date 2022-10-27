@@ -37,7 +37,7 @@ export default function LikeBar(props){
                 
                 <Image
                     style={styles.bottomLogo}
-                    source={get_pic("https://cdn.iconscout.com/icon/free/png-256/comment-3251596-2724645.png")}
+                    source={require('../assets/speechbubble.png')}
                 />  
                 <Image
                     style={styles.bottomLogo}

@@ -10,10 +10,10 @@ export default function PostScreen({navigation}) {
     var posts=[
         {
             post_id: "1",
-            profile_pic: "https://static1.cbrimages.com/wordpress/wp-content/uploads/2022/04/Shrek_Swamp_Meme.jpg",
+            profile_pic: require('../assets/sir_shrek_profile.png'),
             user: "sir_shrek",
             location: "The Kingdom of Far Far Away",
-            post_image: "https://filmconcertslive.com/wp-content/uploads/2021/11/movie_top_shrek2_1100px.jpg",
+            post_image: require('../assets/shrek_post.png'),
             likes: "10.443 likes",
             description: "Roadtrip to meet the #inlaws",
             navigation: navigation,
@@ -24,19 +24,19 @@ export default function PostScreen({navigation}) {
         {
             comment_id: "1",
             post_id: "1",
-            user: "domkeu",
-            comment: "my banan is smaller"
+            user: "Elizabeth",
+            comment: "WOW!"
         },
         {
             comment_id: "2",
             post_id: "1",
-            user: "domkeu",
-            comment: "my banan is bigger"
+            user: "Elizabeth",
+            comment: "what a hottie"
         },
         {
             comment_id: "3",
             post_id: "2",
-            user: "domkeu",
+            user: "donkey_jr",
             comment: "I should not be here"
         }
     ]
@@ -50,17 +50,17 @@ export default function PostScreen({navigation}) {
     function make_post(post_data) {
         return (
             <Post 
-                post_id={post_data.post_id}
-                profile_pic={post_data.profile_pic}
-                user={post_data.user}
-                location={post_data.location}
-                post_image={post_data.post_image}
-                likes={post_data.likes}
-                description={post_data.description}
-                navigation={post_data.navigation}
-                comments={post_data.comments}
-                comments_getter={getComments}
-                comments_setter={setComments}
+                post_id = {post_data.post_id}
+                profile_pic = {post_data.profile_pic}
+                user = {post_data.user}
+                location = {post_data.location}
+                post_image = {post_data.post_image}
+                likes = {post_data.likes}
+                description = {post_data.description}
+                navigation = {post_data.navigation}
+                comments = {post_data.comments}
+                comments_getter = {getComments}
+                comments_setter = {setComments}
             ></Post>
         )
     }
