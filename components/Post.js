@@ -24,9 +24,7 @@ function Post (props){
                 user={props.user}
                 description={props.description}
             ></LikeBar>
-            <Pressable onPress={() => props.navigation.navigate("CommentScreen", {post_id: props.post_id, 
-                comments_setter: props.comments_setter, 
-                comments_getter: props.comments_getter})}>
+            <Pressable onPress={() => props.navigation.navigate("CommentScreen", {post_id: props.post_id})}>
                 <Text style={styles.buttonText}>Go to comments</Text>
             </Pressable>
         </View>
