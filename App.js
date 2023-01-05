@@ -1,141 +1,89 @@
-import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput, Button, FlatList, SafeAreaView, TouchableHighlight, TouchableOpacity} from 'react-native';
-import styles from "./StyleSheet";
+import PostScreen from "./screens/PostScreen";
+import CommentScreen from "./screens/CommentScreen";
 
-function get_pic(url) {
-  return {uri:url}
-}
+import { CommentContext } from "./appContext";
 
-const Comment = ({user, comment}) => {
-  return(
-  <View style={styles.item}>
-    <Text style={styles.title}>
-      {user}
-    </Text>
-    <Text style={styles.comment}>
-      {comment}
-    </Text>
-  </View>
-  );
-}
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
+    var posts = [
+        {
+            post_id: "1",
+            profile_pic: "https://static1.cbrimages.com/wordpress/wp-content/uploads/2022/04/Shrek_Swamp_Meme.jpg",
+            user: "sir_shrek",
+            location: "The Kingdom of Far Far Away",
+            post_image: "https://imgartists.com/wp-content/uploads/2021/12/303615_CARRIAGE_RIDE2.jpg",
+            likes: "10.443 likes",
+            description: "Roadtrip to meet the #inlaws",
+        },
+        {
+            post_id: "2",
+            profile_pic: "https://pbs.twimg.com/media/DrHvc0DVsAAzRz-.jpg",
+            user: "elizabeth_the_dragon",
+            location: "A wedding",
+            post_image: "https://external-preview.redd.it/SWZwV-0NFRO5CoxzQubfYeSQ0pgEBC4qUGjaq6G6akQ.jpg?auto=webp&s=856e3689ae5a8ddcc1af047fe4dfacbec9d9a429",
+            likes: "74.378 likes",
+            description: "My #family is the best",
+        },
+    ];
 
-  const notLikedPhoto = require('./assets/emptyheart.png')
-  const likedPhoto = require('./assets/fullheart.png')
+    var comments = [
+        {
+            comment_id: "1",
+            post_id: "1",
+            user: "elizabeth_the_dragon",
+            comment: "Have a great trip"
+        },
+        {
+            comment_id: "2",
+            post_id: "1",
+            user: "elizabeth_the_dragon",
+            comment: "#wishicouldbethere"
+        },
+        {
+            comment_id: "3",
+            post_id: "2",
+            user: "sir_shrek",
+            comment: "Except for ours @princess_fiona"
+        }
+    ]
 
-  const [imageUri, setImageUri] = useState(notLikedPhoto);
-  const [likedState, setLikedState] = useState(false);
+    const [getPosts, setPosts] = useState((posts));
+    const [getComments, setComments] = useState((comments));
 
-  const likePhoto = () => {
-    if (likedState == false) {
-      setLikedState(true)
-      setImageUri(likedPhoto)
-    } else {
-      setLikedState(false)
-      setImageUri(notLikedPhoto)
-    }
-  }
+    const MyTheme = {
+        dark: false,
+        colors: {
+            primary: 'rgb(255, 45, 85)',
+            background: 'rgb(255, 255, 255)',
+            card: 'rgb(255, 255, 255)',
+            text: 'rgb(28, 28, 30)',
+            border: 'rgb(199, 199, 204)',
+            notification: 'rgb(255, 69, 58)',
+        },
+    };
+    return (
+        <CommentContext.Provider value={[getComments, setComments, getPosts, setPosts]}>
+            <NavigationContainer theme={MyTheme}>
+                <Stack.Navigator>
+                    <Stack.Screen
+                        name="PostScreen"
+                        component={PostScreen}
+                        options={{ title: "Posts" }}
+                    />
+                    <Stack.Screen
+                        name="CommentScreen"
+                        component={CommentScreen}
+                        options={{ title: "Comments" }}
+                    />
+                </Stack.Navigator>
+            </NavigationContainer>
+        </CommentContext.Provider>
 
-  var comments = [];
-
-  const renderComment = ({item}) => (
-    <Comment 
-      comment={item.comment}
-      user={item.user}
-    />)
-  const [commentsState, setCommentsState] = useState(comments);
-  const [currentComment, setCurrentComment] = useState("");
-
-  const addComment = (message) => {
-    setCommentsState([...commentsState, {id : message, user: "donkey", comment: message}]);
-  }
-
-  return (
-    <View style={styles.container}>
-      <View style={styles.profileView}>
-        <Image
-          style={styles.profilePhoto}
-          source={get_pic("https://static1.cbrimages.com/wordpress/wp-content/uploads/2022/04/Shrek_Swamp_Meme.jpg")}
-        />
-        <View style={{flexDirection: 'column'}}>
-          <Text style={{fontWeight: 'bold'}}>
-            sir_shrek
-          </Text>
-          <Text>
-            The Kingdom of Far Far Away
-          </Text>
-        </View>
-        
-        <Image
-          style={styles.dots}
-          source={get_pic("https://apisproductions.com/wp-content/uploads/2020/02/istockphoto-957096060-170667a.jpg")}
-        />
-      </View>
-      <View style={{flex: 6}}>
-        <Image
-          style={styles.postImg}
-          source={get_pic("https://filmconcertslive.com/wp-content/uploads/2021/11/movie_top_shrek2_1100px.jpg")}
-        />
-      </View>
-      <View style={styles.postDescription}>
-        <View style={{flexDirection: 'row'}}>
-          <TouchableOpacity onPress={()=> likePhoto()}>
-            <Image
-              style={styles.bottomHeart}
-              source={imageUri}
-            />
-          </TouchableOpacity>
-          
-          <Image
-            style={styles.bottomLogo}
-            source={get_pic("https://cdn.iconscout.com/icon/free/png-256/comment-3251596-2724645.png")}
-          />  
-          <Image
-            style={styles.bottomLogo}
-            source={require('./assets/paperplane.png')}
-          />
-        </View>
-        <Text style={{marginTop: 10}}>10.598 likes</Text>
-
-        <View style={{flexDirection: 'row'}}>
-          <Text style={{fontWeight: 'bold'}}>sir_shrek</Text>
-          <Text style={{marginLeft: 5}}>Roadtrip to meet the #inlaws</Text>
-        </View>
-
-        <SafeAreaView style={styles.commentStyling}>
-          <FlatList 
-            data={commentsState} 
-            renderItem={renderComment} 
-            keyExtractor={item => item.comment} 
-          />
-        </SafeAreaView>
-
-        <View style={styles.comment}>
-          <Image
-            style={styles.profilePhoto}
-            source={get_pic("https://images2.alphacoders.com/219/219782.jpg")}
-          />
-
-          <View style={styles.inputField}>
-            <TextInput
-              style={{flex: 1}}
-              onChangeText={setCurrentComment}
-              placeholder=" Add comment "
-            />
-
-            <Button
-            style={{flex: 1}}
-            onPress={()=>addComment(currentComment)}
-            title="Post"
-            color="gray"
-            />
-          </View>
-        </View>
-      </View>
-      <StatusBar style="auto" />
-    </View>
-  );
+    );
 }
